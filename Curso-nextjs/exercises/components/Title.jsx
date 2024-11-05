@@ -1,8 +1,14 @@
-export default function Title() {
-    return (
+export default function Title(props) {
+    return props.small ?  (
         <>
-        <h1>Title</h1>
-        <h2>Subtitle</h2>
+        <h2>{props.main}</h2>
+        <p>{props.subtitle}</p>
         </>
-    );
+    ) : (
+        <>
+        <h1>{props.main}</h1>
+        <h2>{props.subtitle}</h2>
+        </>
+
+    )
 };
