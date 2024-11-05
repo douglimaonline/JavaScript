@@ -1,0 +1,15 @@
+.title {
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.red {
+    color: brown;
+}
+
+.blue {
+    color: blue;
+}
