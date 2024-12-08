@@ -50,4 +50,5 @@ button {
   border-radius: 3px;
   width: 250px;
   font-size: 18px;
+  cursor: pointer;
 }
