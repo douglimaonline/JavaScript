@@ -1,60 +1,62 @@
 import React, { useState } from "react";
 
 function App() {
-  var [fullName, setFullName] = useState({
-    firstName: "",
-    lastName: "",
+  const [contact, setContact] = useState({
+    fName: "",
+    lName: "",
+    email: "",
   });
 
-  function changeName(event) {
-    const { value, name } = event.target;
+  function manageChange(event) {
+    const { name, value } = event.target;
 
-    //   setFullName((preValue) => {
-    //     if (name === "fName") {
-    //       return {
-    //         firstName: value,
-    //         lastName: preValue.lastName,
-    //       };
-    //     } else if (name === "lName") {
-    //       return {
-    //         firstName: preValue.firstName,
-    //         lastName: value,
-    //       };
-    //     }
-    //   });
-
-    setFullName((preValue) => {
-      var fullName =
+    setContact((preValue) => {
+      let contact =
         name === "fName"
           ? {
-              firstName: value,
-              lastName: preValue.lastName,
+              fName: value,
+              lName: preValue.lName,
+              email: preValue.email,
             }
-          : {
-              firstName: preValue.firstName,
-              lastName: value,
-            };
-      return fullName;
+          : name === "lName"
+            ? {
+                fName: preValue.fName,
+                lName: value,
+                email: preValue.email,
+              }
+            : {
+                fName: preValue.fName,
+                lName: preValue.lName,
+                email: value,
+              };
+      return contact;
     });
   }
 
   return (
     <div className="container">
       <h1>
-        Hello {fullName.firstName} {fullName.lastName}
+        Hello {contact.fName} {contact.lName}
       </h1>
+      <p>{contact.email}</p>
       <form>
         <input
           name="fName"
           placeholder="First Name"
-          onChange={changeName}
-          value={fullName.firstName}
+          onChange={manageChange}
+          value={contact.fName}
         />
         <input
           name="lName"
           placeholder="Last Name"
-          onChange={changeName}
-          value={fullName.lastName}
+          onChange={manageChange}
+          value={contact.lName}
+        />
+        <input
+          name="email"
+          placeholder="Email"
+          onChange={manageChange}
+          value={contact.email}
         />
         <button>Submit</button>
       </form>
