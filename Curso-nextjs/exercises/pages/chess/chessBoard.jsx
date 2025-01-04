@@ -1,4 +1,6 @@
-export default function chessBoard() {
+import Line from '@/components/Chess/line'
+
+export default function Board() {
   return (
     <div
       style={{
@@ -9,49 +11,16 @@ export default function chessBoard() {
         flexWrap: 'wrap',
       }}
     >
-      <div>{gridGenerate()}</div>
+      <div>
+        <Line white />
+        <Line />
+        <Line white />
+        <Line />
+        <Line white />
+        <Line />
+        <Line white />
+        <Line />
+      </div>
     </div>
   )
-
-  function rowGenerate(x) {
-    let row = []
-    for (let i = 1; i <= 4; i++) {
-      if (x % 2 == 0) {
-        row.push(
-          <>
-            <div
-              style={{ background: 'gray', width: '70px', height: '70px' }}
-            ></div>
-            <div
-              style={{ background: 'white', width: '70px', height: '70px' }}
-            ></div>
-          </>
-        )
-      } else {
-        row.push(
-          <>
-            <div
-              style={{ background: 'white', width: '70px', height: '70px' }}
-            ></div>
-            <div
-              style={{ background: 'gray', width: '70px', height: '70px' }}
-            ></div>
-          </>
-        )
-      }
-    }
-    return row
-  }
-
-  function gridGenerate() {
-    let grid = []
-    for (let i = 1; i <= 8; i++) {
-      grid.push(
-        <div>
-          <div style={{ display: 'flex' }}>{rowGenerate(i)}</div>
-        </div>
-      )
-    }
-    return grid
-  }
 }
