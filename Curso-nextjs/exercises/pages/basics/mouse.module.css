@@ -1,6 +1,7 @@
 .mouse {
   display: flex;
-  align-items: center;
   flex-direction: column;
-  margin-top: 100px;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
