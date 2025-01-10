@@ -1,10 +1,10 @@
-import styles from './mouse.module.css'
+import styles from './exercises.module.css'
 import { useState } from 'react'
 
 export default function mouse() {
   const [mouseLog, setMouseLog] = useState({
-    x: '',
-    y: '',
+    x: 0,
+    y: 0,
   })
 
   return (
@@ -17,8 +17,8 @@ export default function mouse() {
         })
       }}
     >
-      <span>X: {mouseLog.x}</span>
-      <span>Y: {mouseLog.y}</span>
+      <h1>X: {mouseLog.x}</h1>
+      <h1>Y: {mouseLog.y}</h1>
     </div>
   )
 }
