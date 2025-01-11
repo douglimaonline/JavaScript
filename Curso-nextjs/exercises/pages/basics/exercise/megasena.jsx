@@ -1,8 +1,12 @@
 import styles from './exercises.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function mouse() {
-  const [numbers, setNumbers] = useState(['', '', '', '', '', ''])
+  const [numbers, setNumbers] = useState([])
+
+  useEffect(() => {
+    generateMegasenaNumbers()
+  }, [])
 
   function randNum() {
     const RandonNumber = (Math.floor(Math.random() * 60) + 1)
@@ -20,7 +24,7 @@ export default function mouse() {
       }
       megaSenaNumbers.push(rendNumber)
     }
-    setNumbers(megaSenaNumbers)
+    setNumbers(megaSenaNumbers.sort())
   }
 
   const Number = ({ number }) => {
@@ -29,15 +33,15 @@ export default function mouse() {
 
   return (
     <div className={styles.exercise}>
+      <h1>MEGASENA</h1>
       <div style={{ display: 'flex' }}>
         {numbers.map((number, index) => (
           <Number key={index} number={number} />
         ))}
       </div>
-      <h1>MEGASENA</h1>
       <div>
         <button className={styles.button} onClick={generateMegasenaNumbers}>
-          Generate Numbers
+          Gerar Aposta
         </button>
       </div>
     </div>
