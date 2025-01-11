@@ -4,8 +4,6 @@ import { useState } from 'react'
 export default function mouse() {
   const [numbers, setNumbers] = useState(['', '', '', '', '', ''])
 
-  // array de 8 (x) números de 1 a 60
-
   function randNum() {
     const RandonNumber = (Math.floor(Math.random() * 60) + 1)
       .toString()
@@ -16,7 +14,11 @@ export default function mouse() {
   function generateMegasenaNumbers() {
     const megaSenaNumbers = []
     for (let i = 0; i < 6; i++) {
-      megaSenaNumbers.push(randNum())
+      let rendNumber = randNum()
+      while (megaSenaNumbers.includes(rendNumber)) {
+        rendNumber = randNum()
+      }
+      megaSenaNumbers.push(rendNumber)
     }
     setNumbers(megaSenaNumbers)
   }
