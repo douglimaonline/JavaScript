@@ -1,4 +1,4 @@
-import Line from '@/components/Chess/line'
+import Line from '../../components/Chess/line'
 
 export default function Board() {
   return (
