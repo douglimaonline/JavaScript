@@ -1,19 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 export default function () {
-  const [name, setName] = useState('')
-  const [age, setAge] = useState(0)
+  const [name, setName] = useState('Douglas')
+  const [age, setAge] = useState(34)
 
-  useEffect(() => {
-    console.log('name:', name)
-    console.log('age:', age)
-  }, [name, age])
-
-  function saveUser() {
-    fetch('/api/form', {
+  async function saveUser() {
+    await fetch('/api/form', {
       method: 'POST',
       body: JSON.stringify({ name, age }),
     })
+    const userList = await fetch('/api/form').then((res) => res.json())
+    console.log(userList)
   }
 
   return (
