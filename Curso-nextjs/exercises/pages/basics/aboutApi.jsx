@@ -1,16 +1,33 @@
 import { useState } from 'react'
 
 export default function () {
-  const [name, setName] = useState('Douglas')
+  const [name, setName] = useState('Doug')
   const [age, setAge] = useState(34)
+  const [userList, setUserList] = useState([])
 
   async function saveUser() {
     await fetch('/api/form', {
       method: 'POST',
       body: JSON.stringify({ name, age }),
     })
-    const userList = await fetch('/api/form').then((res) => res.json())
-    console.log(userList)
+    const updatedUserList = await fetch('/api/form').then((res) => res.json())
+    setUserList(updatedUserList)
+  }
+
+  function renderListofUser() {
+    return userList.map((user, i) => {
+      return (
+        <>
+          <tbody>
+            <tr key={i}>
+              <td>{i + 1}</td>
+              <td>{user.name}</td>
+              <td>{user.age}</td>
+            </tr>
+          </tbody>
+        </>
+      )
+    })
   }
 
   return (
@@ -34,6 +51,20 @@ export default function () {
       <div>
         <button onClick={saveUser}>Submit</button>
       </div>
+      {userList.length > 0 && (
+        <div style={{ marginTop: '5px' }}>
+          <table>
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Age</th>
+              </tr>
+            </thead>
+            {renderListofUser()}
+          </table>
+        </div>
+      )}
     </div>
   )
 }
