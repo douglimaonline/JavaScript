@@ -9,6 +9,7 @@ export default function navigation() {
       <Link href="/basics/aboutComponent">AboutComponent</Link>
       <Link href="/basics/aboutTsx">AboutTsx</Link>
       <Link href="../chess/chessBoard">Xadrez</Link>
+      <Link href="/basics/aboutApi">AboutAPI</Link>
       <br />
       <h4>
         Procure as páginas linkadas acima dentro do projeto e veja como
