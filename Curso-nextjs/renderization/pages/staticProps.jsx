@@ -1,6 +1,6 @@
 export function getStaticProps() {
   return {
-    revalidate: 6,
+    revalidate: 6, // segundos
     props: {
       number: Math.random(),
     },
