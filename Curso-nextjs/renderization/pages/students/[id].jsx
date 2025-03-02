@@ -1,11 +1,14 @@
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const res = await fetch('http://localhost:3000/api/students/tutors')
+  const tutorsId = await res.json()
+
+  const paths = tutorsId.map((id) => {
+    return { params: { id: `${id}` } }
+  })
+
   return {
     fallback: false,
-    paths: [
-      { params: { id: '123' } },
-      { params: { id: '234' } },
-      { params: { id: '345' } },
-    ],
+    paths,
   }
 }
 
